@@ -3,7 +3,7 @@
 # Logs
 logs
 *.log
-
+react-client/.DS_Store
 # Runtime data
 pids
 *.pid
