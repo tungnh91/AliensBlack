@@ -20,7 +20,6 @@ class App extends React.Component {
 
       success: (redditData) => {
         redditData = JSON.parse(redditData);
-        console.log('===========', redditData.data.children);
         this.setState({
           items: redditData.data.children
         })
@@ -31,7 +30,6 @@ class App extends React.Component {
     });
   }
 
-  // console.log('this is the state', this.state)
 
   render () {
     return (<div>

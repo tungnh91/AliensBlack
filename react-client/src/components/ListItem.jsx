@@ -10,7 +10,7 @@ const ListItem = ({item}) => (
             {item.data.title}
           </a>
         <div className="author">
-          <div>Posted by {item.data.author}</div>
+          <div>Posted by {item.data.author} in {item.data.subreddit_name_prefixed}</div>
         </div>
       </div>
     </div>
