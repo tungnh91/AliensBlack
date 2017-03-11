@@ -1,0 +1,113 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
+body {
+  background-color: #2d2d2d;
+  font-family: 'Lato';
+  color: white;
+  font-weight: 300;
+}
+
+h1 {
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 42px;
+  padding-left: 40%;
+}
+
+h2 {
+  font-size: 15px;
+  padding-left: 60%;
+}
+.posts {
+	padding: 20px;
+}
+.navigation {
+  width: 200px;
+  text-transform: uppercase;
+  float: right;
+}
+
+.navigation ul {
+  background-color: #37383a;
+  cursor: pointer;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  float:right;
+}
+
+.navigation .header {
+  padding: 15px;
+  background-color: #4e5053;
+}
+
+.navigation li {
+  padding: 15px;
+}
+
+.navigation .selected {
+  background-color: #9061b2;
+}
+
+.score {
+  font-size: 20px;
+  margin: 15px;
+  color: #afb3b9;
+  float:left;
+}
+
+.list a {
+  text-decoration: none;
+  font-size: 17px;
+  margin: 15px;
+  color: #afb3b9;
+   float: left;
+}
+
+.post {
+	 width : 250px;
+    height : 90px;
+    margin : 10px 0px 10px 10px ;
+    border: 1px solid black;
+    float: left;   
+    display: list-item;
+}
+
+.title {
+  color:grey;
+  font-size: 18px;
+}
+
+.title a {
+  text-decoration: none;
+  color: #fff;
+  padding: 3px;
+
+}
+
+.author {
+  font-size: 16px;
+  float:middle;
+  padding: 3px;
+
+}
+
+div > img {
+  max-width: 3%;
+  max-height: 3%;
+  padding: 10px;
+  float:left;
+}
+
+/**
+ * Changed to a <b> because React wraps text nodes in
+ * <span> elements if they have non-text-node siblings.
+ */
+ .author b {
+  color: #afb3b9;
+}
+
+a:hover {
+  background-color: lime;
+}

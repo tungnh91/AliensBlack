@@ -2,14 +2,15 @@ import React from 'react';
 
 const ListItem = ({item}) => (
   <div>
-    <div key={item.data.id}>
-        <div className="score">{item.data.score}</div>
+    <div key={item.data.id} className="posts">
+        <table className="score">{item.data.score}</table>
+        <img className="thumbnail" src={(item.data.thumbnail === "self" || item.data.thumbnail === "default") ? "favicon.png" : item.data.thumbnail} />
         <div className="title">
-          <div href={item.data.url}>
+          <a href={item.data.url}>
             {item.data.title}
-          </div>
+          </a>
         <div className="author">
-          Posted by <div>{item.data.author}</div>
+          <div>Posted by {item.data.author}</div>
         </div>
       </div>
     </div>
@@ -19,17 +20,3 @@ const ListItem = ({item}) => (
 
 export default ListItem;
 
-// <div className="video-list-entry">
-//     <div className="media-left media-middle">
-//       <img className="media-object" src={video.snippet.thumbnails.default.url} alt="" />
-//     </div>
-//     <div className="media-body">
-//       <div 
-//         className="video-list-entry-title"
-//         onClick={() => handleVideoListEntryTitleClick(video)}
-//       >
-//         {video.snippet.title}
-//       </div>
-//       <div className="video-list-entry-detail">{video.snippet.description}</div>
-//     </div>
-//   </div>

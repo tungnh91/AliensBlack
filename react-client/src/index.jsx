@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
 import Offline from './components/Offline.jsx'
+import ListSubs from './components/ListSubs.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -14,10 +15,14 @@ class App extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: '/items',
-      success: (data) => {
+      url: 'http://localhost:3000/items',
+      type: 'GET',
+
+      success: (redditData) => {
+        redditData = JSON.parse(redditData);
+        console.log('===========', redditData.data.children);
         this.setState({
-          items: data
+          items: redditData.data.children
         })
       },
       error: (err) => {
@@ -26,24 +31,17 @@ class App extends React.Component {
     });
   }
 
+  // console.log('this is the state', this.state)
+
   render () {
     return (<div>
       <h1>Aliens Black</h1>
-      <List items={window.fakeData[0].data.children}/>
+      <h2>Reddit, declustered, offline.</h2>
+      <List items={this.state.items}/>
+
     </div>)
   }
 }
 
-// class Layout extends React.Component {
-//   constructor(props) {
-
-//   }
-
-//   render () {
-//     return (
-
-//     )
-//   }
-// }
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -1,8 +1,11 @@
 import React from 'react';
 
-const ListSubs = (props) => (
-  <div>
-  <h4> Subreddits </h4>
-  { props.item.description }
+const ListSubs = ({item}) => (
+  <div key={item.data.id} className="list">
+          <a href={'http://reddit.com/' +item.data.subreddit_name_prefixed}>
+            {item.data.subreddit}
+          </a>
   </div>
 )
+
+export default ListSubs;

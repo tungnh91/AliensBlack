@@ -1,11 +1,12 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
+import ListSubs from './ListSubs.jsx';
 
 const List = (props) => (
-  <div>
-    <h4> Front Page </h4>
-    {console.log('props ar2222r ', props)}
+  <div >
     { props.items.map(item => <ListItem item={item}/>)}
+    { props.items.map(item => <ListSubs item={item}/>)}
+
   </div>
 )
 

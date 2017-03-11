@@ -1,8 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var request = require('request');
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
-var items = require('../database-mongo');
+// var items = require('../database-mongo');
 
 var app = express();
 
@@ -14,14 +15,20 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
 app.get('/items', function (req, res) {
-  items.selectAll(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
+	// console.log('this is req =========================><');
+  
+	request("http://www.reddit.com/.json", function (error, response, body) {
+			// console.log('=======================================================================================', typeof body,'<><><><><>', (JSON.parse(body)).data.children);
+			res.send(body);
+		  // res.json({ok:true});
+	});
 });
+
+
+// app.get('*', function(req, res) {
+//   res.send('../react-client/dist/index.html')
+// })
+
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
