@@ -30,7 +30,7 @@ app.get('/items', function (req, res) {
 
 app.get('/offline', function (req, res) {
 	var data = Item.find({}).exec(function(err, data) {
-		console.log(data, 'data inside app get offline');
+		// console.log(data, 'data inside app get offline');
 		// res.redirect(303, '/offline');
 		res.json(data);
 	});
@@ -53,10 +53,8 @@ app.post('/', function(req, res) {
           author: item.data.author,
           sub: item.data.subreddit_name_prefixed
         })
-        // console.log('this da item score', item.data.score)
-        newItem.save();
-   
-      	})
+        newItem.save();   
+      	});
 			}
 	});
 })

@@ -10,7 +10,7 @@ const ListItem = ({item}) => (
             {item.data ? item.data.title : item.title}
           </a>
         <div className="author">
-          <div>Posted by {item.data ? item.data.author : item.author} in {item.data ? item.data.subreddit_name_prefixed : item.subreddit_name_prefixed}</div>
+          <div>Posted by {item.data ? item.data.author : item.author} in {item.data ? item.data.subreddit_name_prefixed : item.sub}</div>
         </div>
       </div>
     </div>

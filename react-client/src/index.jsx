@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       items: []
     }
-    this.whatever = this.whatever.bind(this);
+    this.goOffline = this.goOffline.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class App extends React.Component {
       }
     });
   }
-  whatever(redditData) {
+  goOffline(redditData) {
     console.log('go offline son!');
     ((callback) => {  
       $.ajax({
@@ -69,7 +69,7 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <button onClick={this.whatever}> Go offline son! </button>
+      <button onClick={this.goOffline}> Go offline son! </button>
       <h1>Aliens Black</h1>
       <h2>Reddit, declustered, <button onClick={this.clicked}> offline. </button></h2>
       <List items={this.state.items}/>
