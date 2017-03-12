@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var express = require('express');
+var router = express.Router();
 mongoose.connect('mongodb://localhost/test');
 
 var db = mongoose.connection;
@@ -12,8 +14,13 @@ db.once('open', function() {
 });
 
 var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+  id: String,
+  score: String,
+  url: String,
+  title: String,
+  author: String,
+  sub: String
+
 });
 
 var Item = mongoose.model('Item', itemSchema);
@@ -28,4 +35,6 @@ var selectAll = function(callback) {
   });
 };
 
-module.exports.selectAll = selectAll;
+
+module.exports = Item;
+

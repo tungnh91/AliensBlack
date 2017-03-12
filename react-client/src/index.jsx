@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
-import Offline from './components/Offline.jsx'
 import ListSubs from './components/ListSubs.jsx'
 
 class App extends React.Component {
@@ -25,7 +24,7 @@ class App extends React.Component {
         })
       },
       error: (err) => {
-        console.log('err', err);
+        console.log('err from inside componentDidMount', err);
       }
     });
   }
@@ -34,7 +33,7 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Aliens Black</h1>
-      <h2>Reddit, declustered, offline.</h2>
+      <h2>Reddit, declustered, <button> offline. </button></h2>
       <List items={this.state.items}/>
 
     </div>)

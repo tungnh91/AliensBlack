@@ -21,34 +21,7 @@ h2 {
 .posts {
 	padding: 20px;
 }
-.navigation {
-  width: 200px;
-  text-transform: uppercase;
-  float: right;
-}
 
-.navigation ul {
-  background-color: #37383a;
-  cursor: pointer;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  float:right;
-}
-
-.navigation .header {
-  padding: 15px;
-  background-color: #4e5053;
-}
-
-.navigation li {
-  padding: 15px;
-}
-
-.navigation .selected {
-  background-color: #9061b2;
-}
 
 .score {
   font-size: 20px;
@@ -109,5 +82,9 @@ div > img {
 }
 
 a:hover {
-  background-color: lime;
+  text-decoration: underline;
+  background-color: #06e;
+}
+a:visited { 
+  color: grey; 
 }

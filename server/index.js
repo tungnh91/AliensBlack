@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
+var _ = require('underscore');
+var Link = require ('../database-mongo/index.js')
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
 // var items = require('../database-mongo');
@@ -18,9 +20,12 @@ app.get('/items', function (req, res) {
 			if(error) {
 				console.log('error from server app.get', error);
 			}
+			// console.log('this da body', JSON.parse(body).data)
 			res.send(body);
+			// _each((JSON.parse(body))
 	});
 });
+
 
 
 

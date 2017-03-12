@@ -3,7 +3,7 @@ import React from 'react';
 const ListItem = ({item}) => (
   <div>
     <div key={item.data.id} className="posts">
-        <table className="score">{item.data.score}</table>
+        <div className="score">{item.data.score}</div>
         <img className="thumbnail" src={(item.data.thumbnail === "self" || item.data.thumbnail === "default") ? "favicon.png" : item.data.thumbnail} />
         <div className="title">
           <a href={item.data.url}>
