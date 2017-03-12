@@ -53,13 +53,17 @@ app.post('/', function(req, res) {
           author: item.data.author,
           sub: item.data.subreddit_name_prefixed
         })
-        Item.findOne({id :newItem.id}).exec(function(err, data) {
-					if(err) {
-		        newItem.save();   
-					} else {
-						console.log('its already inside db')
-					}
-				});
+        var isItThere = Item.findOne({id :newItem.id});
+        if(!isItThere) {
+        	Item.findOne({id :newItem.id}).exec(function(err, data) {
+						if(err) {
+							console.log(err,'error inside server findOne');
+						} else {
+			        newItem.save();   
+						}
+        	})
+        }
+				
       	});
       	console.log('saved a buncha shit!!!!');
 			}
