@@ -30,7 +30,6 @@ app.get('/items', function (req, res) {
 
 app.get('/offline', function (req, res) {
 	var data = Item.find({}).exec(function(err, data) {
-		console.log('this is data were sending over', data);
 		res.json(data);
 	});
 });

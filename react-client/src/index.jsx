@@ -34,6 +34,7 @@ class App extends React.Component {
       type: 'GET',
       success: (redditData) => {
         redditData = JSON.parse(redditData);
+        console.log( redditData,'redditdata-----afterparsed------');
         this.setState({
           items: redditData.data.children
         })
@@ -46,7 +47,7 @@ class App extends React.Component {
 
   clicked() {
     $.ajax({
-      url: 'http://localhost:3000/offline',
+      url: 'http://localhost:3000/',
       type: 'POST',
       success: () => {
         console.log('get request sending from client is completed!')
