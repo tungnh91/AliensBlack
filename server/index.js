@@ -53,8 +53,15 @@ app.post('/', function(req, res) {
           author: item.data.author,
           sub: item.data.subreddit_name_prefixed
         })
-        newItem.save();   
+        Item.findOne({id :newItem.id}).exec(function(err, data) {
+					if(err) {
+		        newItem.save();   
+					} else {
+						console.log('its already inside db')
+					}
+				});
       	});
+      	console.log('saved a buncha shit!!!!');
 			}
 	});
 })
