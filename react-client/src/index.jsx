@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       items: []
     }
+    this.whatever = this.whatever.bind(this);
   }
 
   componentDidMount() {
@@ -28,22 +29,28 @@ class App extends React.Component {
       }
     });
   }
-  componentWillReceiveProps(redditData) {
+  whatever(redditData) {
     console.log('go offline son!');
-    $.ajax({
-      url: 'http://localhost:3000/offline',
-      type: 'GET',
-      success: (redditData) => {
-        console.log( redditData[23],'redditdata-----------','typeof', typeof redditData);
-        this.setState({
-          items: redditData
-        })
-        console.log(this.state.items, 'current state after loading offline data');
-      },
-      error: (err) => {
-        console.log('err from inside offline method', err);
-      }
-    });
+    ((callback) => {  
+      $.ajax({
+        url: 'http://localhost:3000/offline',
+        type: 'GET',
+        success: (redditData) => {
+          // console.log( redditData,'redditdata-----------','typeof', typeof redditData);
+          console.log(this.state.items, 'current state after loading offline data');
+          callback(redditData);
+        },
+        error: (err) => {
+          console.log('err from inside offline method', err);
+        }
+      });
+    })((redditData) => {
+      console.log('ran', this.setState);
+      this.setState({
+        items: redditData
+      });
+      console.log('state====*****************==');
+    })
   }
 
 
@@ -62,9 +69,9 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <button onClick={this.componentWillReceiveProps.bind(this)}> Go offline son! </button>
+      <button onClick={this.whatever}> Go offline son! </button>
       <h1>Aliens Black</h1>
-      <h2>Reddit, declustered, <button onClick={this.clicked.bind(this)}> offline. </button></h2>
+      <h2>Reddit, declustered, <button onClick={this.clicked}> offline. </button></h2>
       <List items={this.state.items}/>
 
     </div>)

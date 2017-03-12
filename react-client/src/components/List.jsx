@@ -2,10 +2,10 @@ import React from 'react';
 import ListItem from './ListItem.jsx';
 import ListSubs from './ListSubs.jsx';
 
-const List = (props) => (
+const List = ({items}) => (
   <div >
-    { props.items.map(item => <ListItem key ={item.data.id} item={item}/>)}
-    { props.items.map(item => <ListSubs key ={item.data.id} item={item}/>)}
+    { items.map(item => <ListItem key ={ item.data ? item.data.id : item._id} item={item}/>)}
+    { items.map(item => <ListSubs key ={item.data ? item.data.id : item._id} item={item}/>)}
 
   </div>
 )

@@ -30,6 +30,8 @@ app.get('/items', function (req, res) {
 
 app.get('/offline', function (req, res) {
 	var data = Item.find({}).exec(function(err, data) {
+		console.log(data, 'data inside app get offline');
+		// res.redirect(303, '/offline');
 		res.json(data);
 	});
 });
