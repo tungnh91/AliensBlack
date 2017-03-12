@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var _ = require('underscore');
-var Link = require ('../database-mongo/index.js')
+var Item = require ('../database-mongo/index.js');
+var $ = require('jquery');
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
 // var items = require('../database-mongo');
@@ -20,14 +21,28 @@ app.get('/items', function (req, res) {
 			if(error) {
 				console.log('error from server app.get', error);
 			}
-			// console.log('this da body', JSON.parse(body).data)
 			res.send(body);
 			// _each((JSON.parse(body))
+			// console.log('this da body', (JSON.parse(body)).data.children, 'AND the type is', Array.isArray((JSON.parse(body)).data.children));
+
+
 	});
 });
 
+app.post('/', function(req, res) {
+	console.log('we received your click from server!')
+	$.ajax({
+		type: 'GET',
+		success: () => {
+			res.status(200);
+		},
 
+		error: (err) => {
+			console.log('err from inside POST server', err);
+		}
 
+	});
+})
 
 
 app.listen(3000, function() {

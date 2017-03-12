@@ -27,13 +27,27 @@ class App extends React.Component {
         console.log('err from inside componentDidMount', err);
       }
     });
+
+
   }
 
+  clicked() {
+    $.ajax({
+      type: 'POST',
+      success: () => {
+        console.log('get request sending from client is completed!')
+      },
+      error: (err) => {
+        console.log('err from inside clicked method', err);
+      }
+    });
+    // console.log('clicked right heere')
+  }
 
   render () {
     return (<div>
       <h1>Aliens Black</h1>
-      <h2>Reddit, declustered, <button> offline. </button></h2>
+      <h2>Reddit, declustered, <button onClick={this.clicked}> offline. </button></h2>
       <List items={this.state.items}/>
 
     </div>)
