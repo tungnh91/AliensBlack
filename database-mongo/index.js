@@ -39,24 +39,4 @@ var selectAll = function(callback) {
 
 module.exports = Item;
 
-app.get('/items', function (req, res) {
-  request("http://www.reddit.com/.json", function (error, response, body) {
-      if(error) {
-        console.log('error from DB GET', error);
-      }
-      _.each((JSON.parse(body)).data.children, function(item){
-        var newItem = new Item ({
-          id: item.data.id,
-          score: item.data.score,
-          url: item.data.url,
-          title: item.data.title,
-          author: item.data.author,
-          sub: item.data.subreddit_name_prefixed
-        })
-        // console.log('this da item score', item.data.score)
-        db.collection.save(newItem);
-        
-      })
 
-  });
-});

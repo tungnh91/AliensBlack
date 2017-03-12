@@ -16,7 +16,6 @@ class App extends React.Component {
     $.ajax({
       url: 'http://localhost:3000/items',
       type: 'GET',
-
       success: (redditData) => {
         redditData = JSON.parse(redditData);
         this.setState({
@@ -27,12 +26,27 @@ class App extends React.Component {
         console.log('err from inside componentDidMount', err);
       }
     });
+  }
 
-
+  offline() {
+    $.ajax({
+      url: 'http://localhost:3000/offline',
+      type: 'GET',
+      success: (redditData) => {
+        redditData = JSON.parse(redditData);
+        this.setState({
+          items: redditData.data.children
+        })
+      },
+      error: (err) => {
+        console.log('err from inside offline method', err);
+      }
+    });
   }
 
   clicked() {
     $.ajax({
+      url: 'http://localhost:3000/offline',
       type: 'POST',
       success: () => {
         console.log('get request sending from client is completed!')
@@ -41,13 +55,12 @@ class App extends React.Component {
         console.log('err from inside clicked method', err);
       }
     });
-    // console.log('clicked right heere')
   }
 
   render () {
     return (<div>
       <h1>Aliens Black</h1>
-      <h2>Reddit, declustered, <button onClick={this.clicked}> offline. </button></h2>
+      <h2>Reddit, declustered, <button onClick={this.clicked.bind(this)}> offline. </button></h2>
       <List items={this.state.items}/>
 
     </div>)
