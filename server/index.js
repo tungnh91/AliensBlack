@@ -32,6 +32,7 @@ app.get('/offline', function (req, res) {
 	var data = Item.find({}).exec(function(err, data) {
 		// console.log(data, 'data inside app get offline');
 		// res.redirect(303, '/offline');
+
 		res.json(data);
 	});
 });
@@ -44,6 +45,7 @@ app.post('/', function(req, res) {
 				console.log('error from server 2nd request', error);
 			}
 			else {
+				console.log((JSON.parse(body)).data.children, 'data came thru from API to save to server')
 				_.each((JSON.parse(body)).data.children, function(item){
         var newItem = new Item ({
           id: item.data.id,
@@ -51,7 +53,8 @@ app.post('/', function(req, res) {
           url: item.data.url,
           title: item.data.title,
           author: item.data.author,
-          sub: item.data.subreddit_name_prefixed
+          sub: item.data.subreddit_name_prefixed,
+          created: item.data.created
         })
         var isItThere = Item.findOne({id :newItem.id});
         if(!isItThere) {

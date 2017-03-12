@@ -20,8 +20,8 @@ var itemSchema = mongoose.Schema({
   url: String,
   title: String,
   author: String,
-  sub: String
-
+  sub: String,
+  created: String 
 });
 
 var Item = mongoose.model('Item', itemSchema);
