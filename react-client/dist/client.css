@@ -10,8 +10,8 @@ body {
 h1 {
   font-weight: 300;
   text-transform: uppercase;
-  font-size: 42px;
-  padding-left: 40%;
+  font-size: 38px;
+  padding-left: 30%;
 }
 
 .s {
@@ -19,6 +19,12 @@ h1 {
   text-transform: uppercase;
   font-size: 42px;
   border-radius: 25px;
+}
+
+button {
+  font-size: 15px;
+  border-radius: 25px;
+
 }
 
 h2 {
