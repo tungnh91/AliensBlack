@@ -39,7 +39,7 @@ app.get('/offline', function (req, res) {
 
 app.post('/', function(req, res) {
 	console.log('we received your click from server!')
-
+	res.send(201);
  	request("http://www.reddit.com/.json", function (error, response, body) {
 			if(error) {
 				console.log('error from server 2nd request', error);

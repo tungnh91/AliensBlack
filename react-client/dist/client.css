@@ -12,6 +12,7 @@ h1 {
   text-transform: uppercase;
   font-size: 38px;
   padding-left: 30%;
+  padding-top: 1%;
 }
 
 .s {
@@ -100,4 +101,40 @@ a:hover {
 }
 a:visited { 
   color: grey; 
+}
+
+.hidden { display:none; }
+
+.saved {
+  font-size: 18px;
+  color: grey;
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: lightgreen;
+  text-align: center;
+  line-height: 1.5;
+  overflow: hidden; 
+  -webkit-box-shadow: 0 0 5px black;
+  -moz-box-shadow:    0 0 5px black;
+  box-shadow:         0 0 5px black;
+}
+
+@-webkit-keyframes slideDown {
+    0%, 100% { -webkit-transform: translateY(-50px); }
+    10%, 90% { -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes slideDown {
+    0%, 100% { -moz-transform: translateY(-50px); }
+    10%, 90% { -moz-transform: translateY(0px); }
+}
+
+
+.cssanimations.csstransforms .saved {
+    -webkit-transform: translateY(-50px);
+    -webkit-animation: slideDown 4.5s 5.0s 5 ease forwards;
+    -moz-transform:    translateY(-50px);
+    -moz-animation:    slideDown 4.5s 5.0s 5 ease forwards;
 }

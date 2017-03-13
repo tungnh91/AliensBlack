@@ -4,11 +4,14 @@ import $ from 'jquery';
 import List from './components/List.jsx';
 import ListSubs from './components/ListSubs.jsx'
 
+$('document').onLoad = $('.saved').hide();
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
+      showSaved: false
     }
     this.goOffline = this.goOffline.bind(this);
     this.clicked = this.clicked.bind(this);
@@ -61,7 +64,8 @@ class App extends React.Component {
       url: 'http://localhost:3000/',
       type: 'POST',
       success: () => {
-        console.log('get request sending from client is completed!')
+        console.log('boutta change state')
+        this.setState({showSaved: true});
       },
       error: (err) => {
         console.log('err from inside clicked method', err);
@@ -72,6 +76,9 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Alien<button onClick={this.clicked} className="s">s</button> Black</h1>
+
+      <div className={this.state.showSaved ? 'saved' : 'hidden'}>Saved! </div> 
+
       <h2>Reddit, declustered, <button onClick = {this.goOffline}> offline. </button></h2>
       <List items={this.state.items}/>
 
