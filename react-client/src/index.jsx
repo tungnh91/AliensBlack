@@ -11,6 +11,7 @@ class App extends React.Component {
       items: []
     }
     this.goOffline = this.goOffline.bind(this);
+    this.clicked = this.clicked.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +45,8 @@ class App extends React.Component {
           console.log('err from inside offline method', err);
         }
       });
-    })((redditData) => {
+    })
+    ((redditData) => {
       console.log('ran', this.setState);
       this.setState({
         items: redditData
@@ -69,9 +71,8 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <button onClick={this.goOffline}> Go offline son! </button>
-      <h1>Aliens Black</h1>
-      <h2>Reddit, declustered, <button onClick={this.clicked}> offline. </button></h2>
+      <h1>Alien<button onClick={this.clicked} className="s">s</button> Black</h1>
+      <h2>Reddit, declustered, <button onClick = {this.goOffline}> offline. </button></h2>
       <List items={this.state.items}/>
 
     </div>)
