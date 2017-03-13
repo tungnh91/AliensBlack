@@ -21,7 +21,7 @@ var itemSchema = mongoose.Schema({
   title: String,
   author: String,
   sub: String,
-  created: String 
+  created: Number 
 });
 
 var Item = mongoose.model('Item', itemSchema);

@@ -45,7 +45,7 @@ app.post('/', function(req, res) {
 				console.log('error from server 2nd request', error);
 			}
 			else {
-				console.log((JSON.parse(body)).data.children, 'data came thru from API to save to server')
+				// console.log((JSON.parse(body)).data.children, 'data came thru from API to save to server')
 				_.each((JSON.parse(body)).data.children, function(item){
         var newItem = new Item ({
           id: item.data.id,
@@ -54,21 +54,23 @@ app.post('/', function(req, res) {
           title: item.data.title,
           author: item.data.author,
           sub: item.data.subreddit_name_prefixed,
-          created: item.data.created
+          created: item.data.created_utc
         })
-        var isItThere = Item.findOne({id :newItem.id});
-        if(!isItThere) {
+        var isItThere;
         	Item.findOne({id :newItem.id}).exec(function(err, data) {
 						if(err) {
 							console.log(err,'error inside server findOne');
 						} else {
-			        newItem.save();   
+        			isItThere = (data !== null);
+							console.log('isItThere ??????' , isItThere);
+			        if(!isItThere) {
+				        newItem.save();   
+			      		console.log('saved this shit!!!!');
+			        }
 						}
         	})
-        }
 				
       	});
-      	console.log('saved a buncha shit!!!!');
 			}
 	});
 })
