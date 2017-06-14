@@ -1,16 +1,16 @@
-var mongoose = require('mongoose');
-var express = require('express');
-var router = express.Router();
+const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/test');
-var app = express();
-var db = mongoose.connection;
+const app = express();
+const db = mongoose.connection;
 
-db.on('error', function() {
+db.on('error', () => {
   console.log('mongoose connection error');
 });
 
-db.once('open', function() {
+db.once('open', () => {
   console.log('mongoose connected successfully');
 });
 
@@ -26,8 +26,8 @@ var itemSchema = mongoose.Schema({
 
 var Item = mongoose.model('Item', itemSchema);
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+var selectAll = (callback) => {
+  Item.find({},(err, items) => {
     if(err) {
       callback(err, null);
     } else {
