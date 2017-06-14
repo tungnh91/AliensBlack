@@ -23,7 +23,6 @@ class App extends React.Component {
       type: 'GET',
       success: (redditData) => {
         redditData = (JSON.parse(redditData)).data.children;
-        console.log(redditData[0], 'this is what I hoped to be an array', 'is it?', Array.isArray(redditData));
         this.setState({
           items: redditData
         })
@@ -34,14 +33,11 @@ class App extends React.Component {
     });
   }
   goOffline(redditData) {
-    console.log('go offline son!');
     ((callback) => {  
       $.ajax({
         url: 'http://localhost:3000/offline',
         type: 'GET',
         success: (redditData) => {
-          // console.log( redditData,'redditdata-----------','typeof', typeof redditData);
-          console.log(this.state.items, 'current state after loading offline data');
           callback(redditData);
         },
         error: (err) => {
@@ -50,11 +46,9 @@ class App extends React.Component {
       });
     })
     ((redditData) => {
-      console.log('ran', this.setState);
       this.setState({
         items: redditData
       });
-      console.log('state====*****************==');
     })
   }
 
@@ -64,7 +58,6 @@ class App extends React.Component {
       url: 'http://localhost:3000/',
       type: 'POST',
       success: () => {
-        console.log('boutta change state')
         this.setState({showSaved: true});
       },
       error: (err) => {
