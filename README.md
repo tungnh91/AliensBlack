@@ -2,7 +2,7 @@
 
 Aliens Black is a Real time Reddit Client that provides a distraction-free user interface along with the ability to go offline. 
 
-![eDiW3k](http://i.makeagif.com/media/6-14-2017/eDiW3k.gif)
+![](http://i.makeagif.com/media/6-14-2017/eDiW3k.gif)
 
 - Front end was built entirely with ReactJS for snappier user responses and modularized components
 - New posts were fetched by a NodeJS and ExpressJS server via Reddit API. Server will switch to fetch from database instead of Reddit API when user enables offline mode. This allows user to save mobile data and ability to browse reddit whenever and wherever.
